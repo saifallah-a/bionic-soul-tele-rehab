@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-
-// On importe les futures pages (que l'on va créer juste après)
 import 'patient_dashboard.dart';
 import 'prothesiste_dashboard.dart';
 
@@ -50,7 +48,6 @@ class _AuthPageState extends State<AuthPage> {
       
       final user = userCredential.user;
       if (user != null) {
-        // On récupère le rôle de l'utilisateur (Patient ou Prothésiste)
         final userDoc = await _firestore.collection('users').doc(user.uid).get();
         
         if (userDoc.exists) {
@@ -117,7 +114,6 @@ class _AuthPageState extends State<AuthPage> {
                   ],
                 ),
                 child: Center(
-                  // --- LA MODIFICATION EST ICI ---
                   child: ClipOval(
                     child: Padding(
                       padding: const EdgeInsets.all(9.0), // Ajuste ce chiffre si le logo est trop grand/petit
@@ -125,7 +121,7 @@ class _AuthPageState extends State<AuthPage> {
                         'assets/icons/logo_bionic.png',
                         width: 90,
                         height: 90,
-                        fit: BoxFit.contain, // Empêche le logo d'être déformé
+                        fit: BoxFit.contain, 
                       ),
                     ),
                   ),

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'dart:convert'; // Indispensable pour lire le JSON
+import 'dart:convert'; //TO READ THE JSON
 import 'package:google_generative_ai/google_generative_ai.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:cloud_firestore/cloud_firestore.dart'; // Indispensable pour la base de données
+import 'package:cloud_firestore/cloud_firestore.dart'; 
 import 'auth_page.dart';
 
 class PatientDashboard extends StatefulWidget {
@@ -28,7 +28,7 @@ class _PatientDashboardState extends State<PatientDashboard> {
     _model = GenerativeModel(
       model: 'gemini-2.5-flash',
       apiKey: _apiKey,
-      // --- NOUVEAU PROMPT ENGINEERING AVANCÉ ---
+      // --- THE NECESSARY PROMPT SO THAT THE LLM ACT AS MEDICAL ASSITANT ---
       systemInstruction: Content.system(
         "Tu es l'assistant médical bienveillant de l'application Bionic Soul. "
         "Ton rôle est d'écouter un patient amputé et d'évaluer son état avec sa prothèse. "
@@ -79,7 +79,7 @@ class _PatientDashboardState extends State<PatientDashboard> {
     }
   }
 
-  // --- NOUVELLE FONCTION : GÉNÉRER ET ENVOYER LE BILAN ---
+ 
   Future<void> _genererBilanEtTerminer() async {
     if (_messages.length <= 1) {
       ScaffoldMessenger.of(context).showSnackBar(

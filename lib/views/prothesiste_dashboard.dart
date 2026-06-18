@@ -70,11 +70,9 @@ class ProthesisteDashboard extends StatelessWidget {
                   itemBuilder: (context, index) {
                     final data = bilans[index].data() as Map<String, dynamic>;
                     
-                    // --- NOUVEAU : Récupération de l'identité du patient ---
+                    
                     final String patientEmail = data['patientEmail'] ?? 'Email inconnu';
                     final String patientId = data['patientId'] ?? 'ID non spécifié';
-                    // --------------------------------------------------------
-
                     final int douleur = data['niveau_douleur'] ?? 0;
                     final bool urgence = data['urgence'] ?? false;
                     final String resume = data['resume'] ?? 'Pas de résumé';
@@ -131,7 +129,6 @@ class ProthesisteDashboard extends StatelessWidget {
                             const SizedBox(height: 12),
                             const Divider(height: 1),
                             const SizedBox(height: 12),
-                            // ----------------------------------------------
 
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
